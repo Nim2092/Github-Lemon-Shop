@@ -110,7 +110,7 @@
                                                 <a href="login.jsp">Log in <img style="margin-right: 15px;" src="icon/5.png" alt="#" /> </a>
                                             </li>
                                             <li class="menu_iconb">
-                                                <a href="#">Signup<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
+                                                <a href="signup.jsp">Signup<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
                                             </li>
                                             <li class="tytyu">
                                                 <a href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
