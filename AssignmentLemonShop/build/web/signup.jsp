@@ -75,7 +75,7 @@ button[type="submit"]:hover {
 </head>
 <body>
   <div class="container">
-    <form method="post" id="signup-form">
+    <form action="signup" method="post" id="signup-form">
       <h1>Sign Up</h1>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" required>
@@ -89,7 +89,8 @@ button[type="submit"]:hover {
       <input type="date" id="dob" name="dob" required>
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required>
-      <button onclick ="checkPass()" type="submit">Sign Up</button>
+      
+      <button onclick ="checkPass()" type="submit">Sign Up</button><span>${message}</span>
       <p class="signup-link">Have an account? <a href="signup.html">Login here</a></p>
       <p id ="message"class="message"></p>
     </form>

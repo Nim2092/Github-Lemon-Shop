@@ -30,17 +30,17 @@ public class AccountDAO extends DBContext{
 
     }
 
-    public void addAccount(Account account) {
-        String query = "INSERT INTO account (username, password, email, full_name, phone_number, address, date_of_birth, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+ public void addAccount(String name,String password,String email,String full_name,String phone_number,String  address,String  date_of_birth) {
+        String query = "INSERT INTO account (username, password, email, full_name, phone_number, address, date_of_birth) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, account.getUsername());
-            statement.setString(2, account.getPassword());
-            statement.setString(3, account.getEmail());
-            statement.setString(4, account.getFullName());
-            statement.setString(5, account.getPhoneNumber());
-            statement.setString(6, account.getAddress());
-            statement.setDate(7, (Date) account.getDateOfBirth());
-            statement.setInt(8, account.getRole());
+            statement.setString(1, name);
+            statement.setString(2, password);
+            statement.setString(3, email);
+            statement.setString(4, full_name);
+            statement.setString(5, phone_number);
+            statement.setString(6, address);
+            statement.setString(7,date_of_birth );
+            statement.executeUpdate();
         }
         catch(Exception e){
             
@@ -138,5 +138,11 @@ public class AccountDAO extends DBContext{
         }
         return null;
         
+    }
+}
+class  test{
+    public static void main(String[] args) {
+        AccountDAO accountDAO= new AccountDAO();
+        accountDAO.addAccount("hminh", "1312", "asdasd@gmail.com", "Hoaang Minh", null, null, "1985-07-22");
     }
 }

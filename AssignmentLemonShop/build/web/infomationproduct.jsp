@@ -23,7 +23,7 @@
         <div class="card" style="border-radius: 15px;">
           <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/12.webp"
+            <img src="${product.getImageUrl()}"
               style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"
               alt="Laptop" />
             <a href="#!">
@@ -33,8 +33,8 @@
           <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
               <div>
-                <p><a href="#!" class="text-dark">Dell Xtreme 270</a></p>
-                <p class="small text-muted">Laptops</p>
+                <p><a style="text-decoration: none" href="#!" class="text-dark">${product.getProductName()}</a></p>
+                <p class="small text-muted"> ${category.getCategoryName()}</p>
               </div>
               <div>
                 <div class="d-flex flex-row justify-content-end mt-1 mb-4 text-danger">
@@ -50,10 +50,10 @@
           <hr class="my-0" />
           <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
-              <p><a href="#!" class="text-dark">$3,999</a></p>
-              <p class="text-dark">#### 8787</p>
+                <p>$<a  style="text-decoration: none" href="#!" class="text-dark">${product.getPrice1()}</a></p>
+              
             </div>
-            <p class="small text-muted">VISA Platinum</p>
+            <p class="small text-muted">${product.getDescription()}</p>
           </div>
           <hr class="my-0" />
           <div class="card-body">

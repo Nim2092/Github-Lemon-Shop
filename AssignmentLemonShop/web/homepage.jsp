@@ -92,7 +92,7 @@
                                         <div class="full">
                                             <div class="center-desk">
                                                 <div class="logo">
-                                                    <a href="index.html"><img src="images/logolemon.png" alt="#"></a>
+                                                    <a href="homepage.jsp"><img src="images/logolemon.png" alt="#"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,6 +111,11 @@
                                                 <c:if test="${sessionScope.acc==null}">
                                                     <li class="menu_iconb">
                                                         <a href="signup.jsp">Signup<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
+                                                    </li>
+                                                </c:if>
+                                                    <c:if test="${sessionScope.acc!=null}">
+                                                    <li class="menu_iconb">
+                                                        <a href="logout">Log out <img style="margin-right: 15px;" src="icon/5.png" alt="#" /> </a>
                                                     </li>
                                                 </c:if>
                                                 <c:if test="${sessionScope.acc!=null}">
@@ -172,7 +177,7 @@
                                                         <div class="container">
                                                             <div class="carousel-caption text">
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12" style="padding: 0">
                                                                         <div class="img_bg">
                                                                             <figure><img src="images/banner2.png" /></figure>
                                                                         </div>
@@ -186,7 +191,7 @@
                                                         <div class="container">
                                                             <div class="carousel-caption text">
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12" style="padding: 0">
                                                                         <div class="img_bg">
                                                                             <figure><img src="images/banner3.png" /></figure>
                                                                         </div>
@@ -322,12 +327,12 @@
                                             <h3>Contact us </h3>
                                             <ul class="loca">
                                                 <li>
-                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>145 londone
-                                                    <br>uk </li>
+                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>70 Nguyen Hoang
+                                                    <br>Ha Noi </li>
                                                 <li>
-                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+12586954775 </li>
+                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+84919982032 </li>
                                                 <li>
-                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>demo@gmail.com </li>
+                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>lemonshop@gmail.com </li>
 
                                             </ul>
 
