@@ -6,7 +6,9 @@ package controller;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,6 +44,14 @@ class Test {
         try {
             con = db.getConnection();
             System.out.println("ket noi thang cong");
+             Statement stmt = con.createStatement();
+            // get data from table 'student'
+            ResultSet rs = stmt.executeQuery("select * from account");
+            // show data
+            while (rs.next()) {
+                System.out.println(rs.getInt(1) + "  " + rs.getString(2) 
+                        + "  " + rs.getString(3));
+            }
         } catch (Exception e) {
             System.out.println("ket noit that bai" + e.getMessage());
         }

@@ -4,21 +4,21 @@
  */
 package controller;
 
-import DAL.AccountDAO;
+import DAL.CategoryDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import model.Account;
+import java.util.List;
+import model.Category;
 
 /**
  *
  * @author asus
  */
-public class Login extends HttpServlet {
+public class HomeController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,18 +32,10 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Login</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        CategoryDAO cdao= new CategoryDAO();
+        List<Category> listC =cdao.getAllCategories();
+        request.setAttribute("listC", listC);
+        request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,22 +64,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            PrintWriter out = response.getWriter();        
-            String username = request.getParameter("username").trim();
-            String password = request.getParameter("password").trim();
-            AccountDAO accountDAO = new AccountDAO();   
-            
-             Account account= accountDAO.getAccountByUsername(username);
-            if (account == null ||! account.getPassword().equals(password)) {
-                
-                                
-            } else {
-                HttpSession session = request.getSession();
-                session.setAttribute("acc", account);
-                
-                response.sendRedirect("home");
-            }
-     
+        processRequest(request, response);
     }
 
     /**

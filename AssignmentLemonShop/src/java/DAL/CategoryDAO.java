@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import controller.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,15 +17,15 @@ import model.Category;
  *
  * @author asus
  */
-public class CategoryDAO {
+public class CategoryDAO extends  DBContext{
 
-    private Connection connection;
+ 
 
-    public CategoryDAO(Connection connection) {
-        this.connection = connection;
+    public CategoryDAO() {
+      
     }
 
-    public List<Category> getAllCategories() throws SQLException {
+    public List<Category> getAllCategories()  {
         String query = "SELECT * FROM category";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             try ( ResultSet resultSet = statement.executeQuery()) {
@@ -38,10 +39,17 @@ public class CategoryDAO {
                 }
                 return categories;
             }
+            catch(Exception e){
+                
+            }
         }
+        catch(Exception e){
+                
+            }
+        return null;
     }
 
-    public Category getCategoryById(int categoryId) throws SQLException {
+    public Category getCategoryById(int categoryId) {
         String query = "SELECT * FROM category WHERE category_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, categoryId);
@@ -56,19 +64,29 @@ public class CategoryDAO {
                     return null;
                 }
             }
+            catch(Exception e){
+                
+            }
         }
+        catch(Exception e){
+                
+            }
+        return null;
     }
 
-    public void addCategory(Category category) throws SQLException {
+    public void addCategory(Category category)  {
         String query = "INSERT INTO category(category_name, parent_category_id) VALUES (?, ?)";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, category.getCategoryName());
             statement.setInt(2, category.getParentCategoryId());
             statement.executeUpdate();
         }
+        catch(Exception e){
+                
+            }
     }
 
-    public void updateCategory(Category category) throws SQLException {
+    public void updateCategory(Category category) {
         String query = "UPDATE category SET category_name = ?, parent_category_id = ? WHERE category_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, category.getCategoryName());
@@ -78,13 +96,19 @@ public class CategoryDAO {
             statement.setInt(3, category.getCategoryId());
             statement.executeUpdate();
         }
+        catch(Exception e){
+                
+            }
     }
 
-    public void deleteCategory(int categoryId) throws SQLException {
+    public void deleteCategory(int categoryId)  {
         String query = "DELETE FROM category WHERE category_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, categoryId);
             statement.executeUpdate();
         }
+        catch(Exception e){
+                
+            }
     }
 }

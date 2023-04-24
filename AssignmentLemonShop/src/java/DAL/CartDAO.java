@@ -4,6 +4,7 @@
  */
 package DAL;
 
+import controller.DBContext;
 /**
  *
  * @author asus
@@ -15,11 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Cart;
 
-public class CartDAO {
-    private Connection connection;
+public class CartDAO extends  DBContext{
 
-    public CartDAO(Connection connection) {
-        this.connection = connection;
+
+    public CartDAO() {
+       
     }
 
     // Create a new cart
