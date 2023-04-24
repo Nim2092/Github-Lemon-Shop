@@ -92,7 +92,7 @@
                                         <div class="full">
                                             <div class="center-desk">
                                                 <div class="logo">
-                                                    <a href="index.html"><img src="images/logo.png" alt="#"></a>
+                                                    <a href="index.html"><img src="images/logolemon.png" alt="#"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -145,15 +145,8 @@
                             <div class="banner_main">
                                 <div class="container-fluid padding3">
                                     <div class="row">
-                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mapimg">
-                                            <div class="text-bg">
-                                                <h1>LEMON <br>
-                                                    Shop</h1>
-                                                <span>WWW.lemon.com</span>
-                                                <a href="home">Buy now</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                                        
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div id="myCarousel" class="carousel slide banner_Client" data-ride="carousel">
                                                 <ol class="carousel-indicators">
                                                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -167,7 +160,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="img_bg">
-                                                                            <figure><img src="images/cap.png" /></figure>
+                                                                            <figure><img src="images/banner1.png" /></figure>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -181,7 +174,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="img_bg">
-                                                                            <figure><img src="images/cap.png" /></figure>
+                                                                            <figure><img src="images/banner2.png" /></figure>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -195,7 +188,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <div class="img_bg">
-                                                                            <figure><img src="images/cap.png" /></figure>
+                                                                            <figure><img src="images/banner3.png" /></figure>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -219,7 +212,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="title">
-                                    <h2> Categories</h2>
+                                    <h2>New Arrivals</h2>
                                     <ul class="categiri">
                                         <c:forEach var="c" items="${listC}">
                                             <li>
