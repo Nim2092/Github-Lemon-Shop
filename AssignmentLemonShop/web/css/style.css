@@ -157,7 +157,6 @@ a,
 
 img {
 	max-width: 100%;
-	height: auto;
 }
 
 :focus {
@@ -455,8 +454,11 @@ a.readmore_bt {
 
 .logo {
 	float: left;
+        max-height: 130px;
 }
-
+.logo img{
+    height: 100%;
+}
 nav.main-menu {
 	float: right;
 	margin-left: 0;
@@ -1336,8 +1338,13 @@ nav.main-menu {
 .padding3 {padding: 0px;}
 
 .header {
-	background: transparent;
-	padding: 35px 0px;
+    background: transparent;
+    max-height: 130px;
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: #fff;
+    width: 100%;
 }
 
 .logo a {

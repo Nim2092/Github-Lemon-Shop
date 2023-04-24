@@ -47,6 +47,9 @@ public class Product {
     public double getPrice() {
         return price;
     }
+    public String getPrice1() {
+        return String.format("%.2f", price);
+    }
 
     public void setPrice(double price) {
         this.price = price;

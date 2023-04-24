@@ -41,7 +41,6 @@ public class AccountDAO extends DBContext{
             statement.setString(6, account.getAddress());
             statement.setDate(7, (Date) account.getDateOfBirth());
             statement.setInt(8, account.getRole());
-            statement.executeUpdate();
         }
         catch(Exception e){
             

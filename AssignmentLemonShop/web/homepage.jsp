@@ -158,7 +158,7 @@
                                                         <div class="container">
                                                             <div class="carousel-caption text">
                                                                 <div class="row">
-                                                                    <div class="col-md-12">
+                                                                    <div class="col-md-12" style="padding: 0">
                                                                         <div class="img_bg">
                                                                             <figure><img src="images/banner1.png" /></figure>
                                                                         </div>
@@ -215,11 +215,10 @@
                                     <h2>New Arrivals</h2>
                                     <ul class="categiri">
                                         <c:forEach var="c" items="${listC}">
-                                            <li>
+                                            <li class=" ${tag==c.getCategoryId()? "active":""}">
                                                 <a href="category?id=${c.getCategoryId()}">${c.getCategoryName()}</a>
                                             </li>
-                                        </c:forEach>
-                                        
+                                        </c:forEach>                                        
                                     </ul>
                                 </div>
                             </div>
@@ -227,107 +226,43 @@
 
                         <!-- news brand -->
                         <div id="brand"  class="brand-bg">
-                            <h3>New brands</h3>
+                            <c:if test="${category==null}">
+                                <h3>All products</h3>
+                            </c:if>
+                            <c:if test="${category!=null}">
+                                <h3>${category.getCategoryName()}</h3>
+                            </c:if>
                             <div class="row">
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                
+                                <c:forEach var="p" items="${listP}">
+                                    <a href="product?id=${p.getProductId()}" ><div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
                                     <div class="brand-box">
-                                        <h5>Sale</h5>
-                                        <i><img src="icon/p1.png"/>
+                                        
+                                        <i><img src="${p.getImageUrl()}"/>
                                         </i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
+                                        <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
 
                                     </div>
                                     <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                 </div> </a>
+                                </c:forEach>
+                                <c:forEach var="p" items="${listPid}">
+                                    <a href="product?id=${p.getProductId()}"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
                                     <div class="brand-box">
-                                        <h5>Sale</h5>
-                                        <i><img src="icon/p1.png"/>
+                                        
+                                        <i><img src="${p.getImageUrl()}"/>
                                         </i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
+                                        <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
 
                                     </div>
                                     <a class="buynow" href="#">Buy now</a>
-                                 </div><!-- comment -->
-                                  <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="brand-box">
-                                        <h5>Sale</h5>
-                                        <i><img src="icon/p1.png"/>
-                                        </i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="brand-box">
-                                        <i><img src="icon/p2.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="brand-box">
-                                        <i><img src="icon/p1.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="brand-box">
-                                        <i><img src="icon/p4.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                            </div>
-                        </div>
+                                 </div> </a>
+                                </c:forEach>
+                            </div>        
                         <a class="seemore" href="#">See more</a>
                         <!-- end news brand -->
 
-                        <!-- news shoes -->
-                        <div id="shoes" class="shoes-bg">
-                            <h3>New shoes</h3>
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="shoes-box">
-                                        <h5>Sale</h5>
-                                        <i><img src="icon/s1.png"/>
-                                        </i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
 
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="shoes-box">
-                                        <i><img src="icon/s2.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="shoes-box">
-                                        <i><img src="icon/s3.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="shoes-box">
-                                        <i><img src="icon/s4.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="seemore" href="#">See more</a>
-                    </div>
-
-                </div>
-            </div>
-            <!-- end news shoes -->
 
             <!-- end Categories -->
 
@@ -353,95 +288,8 @@
                 <!-- end save -->
             </section>
 
-            <!-- news Jewellery -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div id="jewellery" class="Jewellery-bg">
-                            <h3>New Jewellery</h3>
-                            <div class="row">
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="Jewellery-box">
-                                        <h5>Sale</h5>
-                                        <i><img src="icon/j1.png"/>
-                                        </i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
 
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="Jewellery-box">
-                                        <i><img src="icon/j2.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="Jewellery-box">
-                                        <i><img src="icon/j3.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                    <div class="Jewellery-box">
-                                        <i><img src="icon/j4.png"/></i>
-                                        <h4>Price $<span class="nolmal">100</span></h4>
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="seemore" href="#">See more</a>
-                    </div>
-                </div>
-            </div>
-            <!-- end news Jewellery -->
-
-            <!-- news Kids -->
-            <div id="kids" class="Kids_background">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="Kids-bg">
-                                <h3>Kids and Babies</h3>
-                                <div class="row">
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                        <div class="Kids-box">
-
-                                            <i><img src="icon/k1.png"/>
-                                            </i>
-                                            <h4>Price $<span class="nolmal">100</span></h4>
-
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                        <div class="Kids-box">
-                                            <i><img src="icon/k1.png"/></i>
-                                            <h4>Price $<span class="nolmal">100</span></h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                        <div class="Kids-box">
-                                            <i><img src="icon/k1.png"/></i>
-                                            <h4>Price $<span class="nolmal">100</span></h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
-                                        <div class="Kids-box">
-                                            <i><img src="icon/k1.png"/></i>
-                                            <h4>Price $<span class="nolmal">100</span></h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end news Kids -->
+           
 
             <!--  footer -->
             <footer>
@@ -488,10 +336,9 @@
                                     
                                     <div class="col-lg-3 col-md-6 col-sm-6">
                                         <div class="address">
-                                            <h3>corporation</h3>
+                                            <h3>Service</h3>
                                             <ul class="Links_footer">
-                                                <li class="active"><a href="#">My account</a> </li>
-                                                <li><a href="#">Wishlist</a> </li>
+                                                <li class="active"><a href="#">My account</a> </li>                                                
                                                 <li><a href="#">My Cart</a> </li>
                                                 <li><a href="#"> Checkout</a> </li>
                                                 <c:if test="${sessionScope.acc==null}">
