@@ -4,7 +4,7 @@
  */
 package DAL;
 
-import controller.DBContext;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -56,9 +56,9 @@ public class CategoryDAO extends  DBContext{
             try ( ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Category category = new Category();
-                    category.setCategoryId(resultSet.getInt("category_id"));
-                    category.setCategoryName(resultSet.getString("category_name"));
-                    category.setParentCategoryId(resultSet.getInt("parent_category_id"));
+                    category.setCategoryId(resultSet.getInt(1));
+                    category.setCategoryName(resultSet.getString(2));
+                    category.setParentCategoryId(resultSet.getInt(3));
                     return category;
                 } else {
                     return null;

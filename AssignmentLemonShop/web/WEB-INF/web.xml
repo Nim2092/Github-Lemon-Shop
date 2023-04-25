@@ -24,6 +24,14 @@
         <servlet-name>SignUp</servlet-name>
         <servlet-class>controller.SignUp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BuyController</servlet-name>
+        <servlet-class>controller.BuyController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Order</servlet-name>
+        <servlet-class>controller.Order</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>SignUp</servlet-name>
         <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuyController</servlet-name>
+        <url-pattern>/buy</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Order</servlet-name>
+        <url-pattern>/order</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

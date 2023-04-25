@@ -4,7 +4,7 @@ package DAL;
  *
  * @author asus
  */
-import controller.DBContext;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import model.Account;
+
 
 import model.Account;
 

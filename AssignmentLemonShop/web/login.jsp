@@ -94,6 +94,7 @@
       <input type="password" name="password" id="password" required>
       <span class="show-password" onclick="togglePasswordVisibility()"> &#128065; </span>
     </div>
+    <span style="color: red">${message}</span>
     <a href="resetpass.html" class="forgot-pass-link">Forgot Password?</a>
     <input type="submit" value="Login" class="submit-btn">
     <p class="signup-link">Don't have an account? <a href="signup.html">Sign up here</a></p>

@@ -4,10 +4,7 @@
  */
 package DAL;
 
-/**
- *
- * @author asus
- */import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,44 +12,50 @@ import java.util.ArrayList;
 import java.util.List;
 import model.CartItem;
 
-public class CartItemDAO {
-    private Connection connection;
+public class CartItemDAO extends DBContext {
 
-    public CartItemDAO(Connection connection) {
-        this.connection = connection;
+    public CartItemDAO() {
     }
 
-    public boolean addCartItem(CartItem cartItem) throws SQLException {
-        String query = "INSERT INTO cart_item (cart_id, product_id, quantity) VALUES (?, ?, ?)";
+    
+
+
+    public void addCartItem(int cartid,int pid)  {
+        String query = "exec add_cart_item @cart_id=?, @product_id=?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, cartItem.getCartId());
-            statement.setInt(2, cartItem.getProductId());
-            statement.setInt(3, cartItem.getQuantity());
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
+            statement.setInt(1, cartid);
+            statement.setInt(2, pid);
+            statement.executeUpdate();            
+        }catch(Exception ex){
+            
         }
     }
 
-    public boolean updateCartItem(CartItem cartItem) throws SQLException {
+    public void updateCartItem(CartItem cartItem) {
         String query = "UPDATE cart_item SET quantity = ? WHERE cart_item_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartItem.getQuantity());
             statement.setInt(2, cartItem.getCartItemId());
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
+            statement.executeUpdate();
+            
+        }
+        catch(Exception ex){
+            
         }
     }
 
-    public boolean deleteCartItem(int cartItemId) throws SQLException {
+    public void deleteCartItem(int cartItemId)  {
         String query = "DELETE FROM cart_item WHERE cart_item_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartItemId);
-            int rowsAffected = statement.executeUpdate();
-            return rowsAffected > 0;
+             statement.executeUpdate();
+            
+        }catch(Exception ex){
+            
         }
     }
 
-    public CartItem getCartItemById(int cartItemId) throws SQLException {
+    public CartItem getCartItemById(int cartItemId)  {
         String query = "SELECT * FROM cart_item WHERE cart_item_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartItemId);
@@ -64,14 +67,16 @@ public class CartItemDAO {
                     cartItem.setProductId(resultSet.getInt("product_id"));
                     cartItem.setQuantity(resultSet.getInt("quantity"));
                     return cartItem;
-                } else {
-                    return null;
-                }
-            }
+                } 
+            }catch(Exception ex){
+            
         }
+        }catch(Exception ex){
+            
+        }return  null;
     }
 
-    public List<CartItem> getAllCartItems() throws SQLException {
+    public List<CartItem> getAllCartItems() {
         String query = "SELECT * FROM cart_item";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -86,7 +91,29 @@ public class CartItemDAO {
                 }
                 return cartItems;
             }
-        }
+        }catch(Exception ex){
+            
+        } return  null;
+    }
+    public List<CartItem> getAllCartItemsByCartId(int cartItemId) {
+        String query = "SELECT * FROM cart_item where cart_id=?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, cartItemId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                List<CartItem> cartItems = new ArrayList<>();
+                while (resultSet.next()) {
+                    CartItem cartItem = new CartItem();
+                    cartItem.setCartItemId(resultSet.getInt("cart_item_id"));
+                    cartItem.setCartId(resultSet.getInt("cart_id"));
+                    cartItem.setProductId(resultSet.getInt("product_id"));
+                    cartItem.setQuantity(resultSet.getInt("quantity"));
+                    cartItems.add(cartItem);
+                }
+                return cartItems;
+            }
+        }catch(Exception ex){
+            
+        } return  null;
     }
 }
 

@@ -4,11 +4,8 @@
  */
 package DAL;
 
-import controller.DBContext;
-/**
- *
- * @author asus
- */import java.sql.Connection;
+
+ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,17 +21,20 @@ public class CartDAO extends  DBContext{
     }
 
     // Create a new cart
-    public void createCart(Cart cart) throws SQLException {
+    public void createCart(Cart cart)  {
         String query = "INSERT INTO cart (account_id, total_price) VALUES (?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cart.getAccountId());
             statement.setFloat(2, (float) cart.getTotalPrice());
             statement.executeUpdate();
         }
+        catch(Exception e){
+            
+        }
     }
 
     // Get all carts
-    public List<Cart> getAllCarts() throws SQLException {
+    public List<Cart> getAllCarts()  {
         String query = "SELECT * FROM cart";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -48,14 +48,19 @@ public class CartDAO extends  DBContext{
                 }
                 return carts;
             }
+            catch(Exception e){
+            
         }
+        }catch(Exception e){
+            
+        } return null;
     }
 
     // Get a cart by ID
-    public Cart getCartById(int cartId) throws SQLException {
-        String query = "SELECT * FROM cart WHERE cart_id = ?";
+    public Cart getCartById(int aid)  {
+        String query = "SELECT * FROM cart WHERE account_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, cartId);
+            statement.setInt(1, aid);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Cart cart = new Cart();
@@ -63,30 +68,37 @@ public class CartDAO extends  DBContext{
                     cart.setAccountId(resultSet.getInt("account_id"));
                     cart.setTotalPrice(resultSet.getFloat("total_price"));
                     return cart;
-                } else {
-                    return null;
-                }
+                } 
             }
+            catch(Exception e){
+            
         }
+        }catch(Exception e){
+            
+        } return null;
     }
 
     // Update a cart
-    public void updateCart(Cart cart) throws SQLException {
+    public void updateCart(Cart cart)  {
         String query = "UPDATE cart SET account_id = ?, total_price = ? WHERE cart_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cart.getAccountId());
             statement.setFloat(2, (float) cart.getTotalPrice());
             statement.setInt(3, cart.getCartId());
             statement.executeUpdate();
+        }catch(Exception e){
+            
         }
     }
 
     // Delete a cart by ID
-    public void deleteCartById(int cartId) throws SQLException {
+    public void deleteCartById(int cartId) {
         String query = "DELETE FROM cart WHERE cart_id = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, cartId);
             statement.executeUpdate();
+        }catch(Exception e){
+            
         }
     }
 }

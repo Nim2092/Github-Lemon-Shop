@@ -79,12 +79,12 @@ public class Login extends HttpServlet {
             
              Account account= accountDAO.getAccountByUsername(username);
             if (account == null ||! account.getPassword().equals(password)) {
-                
+                 request.setAttribute("message", "Username or password is wrong");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                                 
             } else {
                 HttpSession session = request.getSession();
-                session.setAttribute("acc", account);
-                
+                session.setAttribute("acc", account);                
                 response.sendRedirect("home");
             }
      

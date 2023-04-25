@@ -41,6 +41,14 @@
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <script >
+            function mustlogin() {
+                if (confirm("You must log in!! ")) {
+                    window.location = "login.jsp";
+                }
+            }
+        </script>
+        <jsp:useBean id="cartDAO" scope="page" class="DAL.CartDAO" />
     </head>
     <!-- body -->
 
@@ -112,8 +120,11 @@
                                                     <li class="menu_iconb">
                                                         <a href="signup.jsp">Signup<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
                                                     </li>
+                                                    <li class="tytyu">
+                                                    <a onclick="mustlogin()" href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
+                                                </li>
                                                 </c:if>
-                                                    <c:if test="${sessionScope.acc!=null}">
+                                                <c:if test="${sessionScope.acc!=null}">
                                                     <li class="menu_iconb">
                                                         <a href="logout">Log out <img style="margin-right: 15px;" src="icon/5.png" alt="#" /> </a>
                                                     </li>
@@ -122,11 +133,12 @@
                                                     <li class="menu_iconb">
                                                         <a href="#">${sessionScope.acc.getFullName()}<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
                                                     </li>
+                                                    <li class="tytyu">
+                                                    <a href="cart.jsp"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
+                                                </li>
                                                 </c:if>
 
-                                                <li class="tytyu">
-                                                    <a href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
-                                                </li>
+                                                
                                                 <li class="menu_iconb">
                                                     <a href="#"><img style="margin-right: 15px;" src="icon/3.png" alt="#" /></a>
                                                 </li>
@@ -150,7 +162,7 @@
                             <div class="banner_main">
                                 <div class="container-fluid padding3">
                                     <div class="row">
-                                        
+
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                                             <div id="myCarousel" class="carousel slide banner_Client" data-ride="carousel">
                                                 <ol class="carousel-indicators">
@@ -238,228 +250,239 @@
                                 <h3>${category.getCategoryName()}</h3>
                             </c:if>
                             <div class="row">
-                                
+
                                 <c:forEach var="p" items="${listP}">
                                     <a href="product?id=${p.getProductId()}" ><div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="brand-box">
-                                        
-                                        <i><img src="${p.getImageUrl()}"/>
-                                        </i>
-                                        <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
+                                            <div class="brand-box">
 
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                 </div> </a>
+                                                <i><img src="${p.getImageUrl()}"/>
+                                                </i>
+                                                <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
+
+                                            </div>
+                                            <c:if test="${sessionScope.acc==null}">
+                                                <a class="buynow" onclick="mustlogin()" href="#">Buy now</a>
+                                            </c:if>
+                                            <c:if test="${sessionScope.acc!=null}">
+                                                <a class="buynow"  href="buy?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}">Buy now</a>
+                                            </c:if>
+
+                                                </div> </a>
                                 </c:forEach>
                                 <c:forEach var="p" items="${listPid}">
-                                    <a href="product?id=${p.getProductId()}"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                    <div class="brand-box">
-                                        
-                                        <i><img src="${p.getImageUrl()}"/>
-                                        </i>
-                                        <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
+                                                <a href="product?id=${p.getProductId()}"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                                <div class="brand-box">
 
-                                    </div>
-                                    <a class="buynow" href="#">Buy now</a>
-                                 </div> </a>
-                                </c:forEach>
-                            </div>        
-                        <a class="seemore" href="#">See more</a>
-                        <!-- end news brand -->
+                                                    <i><img src="${p.getImageUrl()}"/>
+                                                    </i>
+                                                    <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
 
-
-
-            <!-- end Categories -->
-
-            <section>
-                <!--  save -->
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="save">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <div class="save_box">
-                                            <h3>sale up to 50%</h3>
-                                            <a href="home">Buy now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end save -->
-            </section>
-
-
-           
-
-            <!--  footer -->
-            <footer>
-                <div class="footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="footer_top">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                            <a href="index.html"> <img class="logo1" src="images/logo1.png" /></a>
-                                        </div>
-                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                            <ul class="sociel">
-                                                <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
-                                <div class="row">
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 ">
-                                        <div class="address">
-                                            <h3>Contact us </h3>
-                                            <ul class="loca">
-                                                <li>
-                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>70 Nguyen Hoang
-                                                    <br>Ha Noi </li>
-                                                <li>
-                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+84919982032 </li>
-                                                <li>
-                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>lemonshop@gmail.com </li>
-
-                                            </ul>
-
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-lg-3 col-md-6 col-sm-6">
-                                        <div class="address">
-                                            <h3>Service</h3>
-                                            <ul class="Links_footer">
-                                                <li class="active"><a href="#">My account</a> </li>                                                
-                                                <li><a href="#">My Cart</a> </li>
-                                                <li><a href="#"> Checkout</a> </li>
+                                                </div>
                                                 <c:if test="${sessionScope.acc==null}">
-                                                    <li><a href="login.jsp">Login</a> </li>
+                                                    <a class="buynow" onclick="mustlogin()" href="#">Buy now</a>
                                                 </c:if>
-                                                    <c:if test="${sessionScope.acc!=null}">
-                                                    <li><a href="logout">Logout</a> </li>
-                                                </c:if>
-                                                    
-                                                
-                                            </ul>
-                                        </div>
+                                                <c:if test="${sessionScope.acc!=null}">
+                                                    <a class="buynow"  href="buy?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}">Buy now</a>
+                                                    </c:if>
+                                                    </div> </a>
+                                </c:forEach>
+                                                </div>        
+                                                <a class="seemore" href="#">See more</a>
+                                            <!-- end news brand -->
+
+
+
+                                            <!-- end Categories -->
+
+                                            <section>
+                                                <!--  save -->
+
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="save">
+                                                                <div class="row">
+                                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                                        <div class="save_box">
+                                                                            <h3>sale up to 50%</h3>
+                                                                            <a href="home">Buy now</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- end save -->
+                                            </section>
+
+
+
+
+                                            <!--  footer -->
+                                            <footer>
+                                                <div class="footer">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="footer_top">
+                                                                    <div class="row">
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                                            <a href="index.html"> <img class="logo1" src="images/logo1.png" /></a>
+                                                                        </div>
+                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                                            <ul class="sociel">
+                                                                                <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                                                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                                                <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                                                <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                                                                <div class="row">
+                                                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 ">
+                                                                        <div class="address">
+                                                                            <h3>Contact us </h3>
+                                                                            <ul class="loca">
+                                                                                <li>
+                                                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>70 Nguyen Hoang
+                                                                                    <br>Ha Noi </li>
+                                                                                <li>
+                                                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+84919982032 </li>
+                                                                                <li>
+                                                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>lemonshop@gmail.com </li>
+
+                                                                            </ul>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-md-6 col-sm-6">
+                                                                        <div class="address">
+                                                                            <h3>Service</h3>
+                                                                            <ul class="Links_footer">
+                                                                                <li class="active"><a href="#">My account</a> </li>                                                
+                                                                                <li><a href="#">My Cart</a> </li>
+                                                                                <li><a href="#"> Checkout</a> </li>
+                                                                                    <c:if test="${sessionScope.acc==null}">
+                                                                                    <li><a href="login.jsp">Login</a> </li>
+                                                                                    </c:if>
+                                                                                    <c:if test="${sessionScope.acc!=null}">
+                                                                                    <li><a href="logout">Logout</a> </li>
+                                                                                    </c:if>
+
+
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-lg-3 col-md-6 col-sm-6 ">
+                                                                        <div class="address">
+                                                                            <h3>why choose us</h3>
+                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+                                                                            <form class="newtetter">
+                                                                                <input class="tetter" placeholder="Your email" type="text" name="Your email">
+                                                                                <button class="submit">Subscribe</button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="copyright"> 
+                                                        <div class="container">
+                                                            <a class="text-center">Copyright by Lemon</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </footer>
+                                            <!-- end footer -->
+
+
                                     </div>
 
-                                    <div class="col-lg-3 col-md-6 col-sm-6 ">
-                                        <div class="address">
-                                            <h3>why choose us</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
-                                            <form class="newtetter">
-                                                <input class="tetter" placeholder="Your email" type="text" name="Your email">
-                                                <button class="submit">Subscribe</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="overlay"></div>
 
-                    <div class="copyright"> 
-                        <div class="container">
-                            
-                        </div>
-                    </div>
-                </div>
+                                    <!-- Javascript files-->
+                                    <script src="js/jquery.min.js"></script>
+                                    <script src="js/popper.min.js"></script>
+                                    <script src="js/bootstrap.bundle.min.js"></script>
+                                    <script src="js/jquery-3.0.0.min.js"></script>
 
-            </footer>
-            <!-- end footer -->
+                                    <!-- sidebar -->
+                                    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+                                    <script src="js/custom.js"></script>
+                                    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+                                    <script type="text/javascript">
+                                                        $(document).ready(function () {
+                                                            $("#sidebar").mCustomScrollbar({
+                                                                theme: "minimal"
+                                                            });
 
+                                                            $('#dismiss, .overlay').on('click', function () {
+                                                                $('#sidebar').removeClass('active');
+                                                                $('.overlay').removeClass('active');
+                                                            });
 
-        </div>
+                                                            $('#sidebarCollapse').on('click', function () {
+                                                                $('#sidebar').addClass('active');
+                                                                $('.overlay').addClass('active');
+                                                                $('.collapse.in').toggleClass('in');
+                                                                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                                                            });
+                                                        });
+                                    </script>
 
-        <div class="overlay"></div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $(".fancybox").fancybox({
+                                                openEffect: "none",
+                                                closeEffect: "none"
+                                            });
 
-        <!-- Javascript files-->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.0.0.min.js"></script>
+                                            $(".zoom").hover(function () {
 
-        <!-- sidebar -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#sidebar").mCustomScrollbar({
-                    theme: "minimal"
-                });
+                                                $(this).addClass('transition');
+                                            }, function () {
 
-                $('#dismiss, .overlay').on('click', function () {
-                    $('#sidebar').removeClass('active');
-                    $('.overlay').removeClass('active');
-                });
+                                                $(this).removeClass('transition');
+                                            });
+                                        });
+                                    </script>
+                                    <script>
+                                        // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+                                        // Australia.
+                                        function initMap() {
+                                            var map = new google.maps.Map(document.getElementById('map'), {
+                                                zoom: 11,
+                                                center: {
+                                                    lat: 40.645037,
+                                                    lng: -73.880224
+                                                },
+                                            });
 
-                $('#sidebarCollapse').on('click', function () {
-                    $('#sidebar').addClass('active');
-                    $('.overlay').addClass('active');
-                    $('.collapse.in').toggleClass('in');
-                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                });
-            });
-        </script>
+                                            var image = 'images/maps-and-flags.png';
+                                            var beachMarker = new google.maps.Marker({
+                                                position: {
+                                                    lat: 40.645037,
+                                                    lng: -73.880224
+                                                },
+                                                map: map,
+                                                icon: image
+                                            });
+                                        }
+                                    </script>
+                                    <!-- google map js -->
+                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+                                    <!-- end google map js -->
+                                    </body>
 
-        <script>
-            $(document).ready(function () {
-                $(".fancybox").fancybox({
-                    openEffect: "none",
-                    closeEffect: "none"
-                });
-
-                $(".zoom").hover(function () {
-
-                    $(this).addClass('transition');
-                }, function () {
-
-                    $(this).removeClass('transition');
-                });
-            });
-        </script>
-        <script>
-            // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-            // Australia.
-            function initMap() {
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 11,
-                    center: {
-                        lat: 40.645037,
-                        lng: -73.880224
-                    },
-                });
-
-                var image = 'images/maps-and-flags.png';
-                var beachMarker = new google.maps.Marker({
-                    position: {
-                        lat: 40.645037,
-                        lng: -73.880224
-                    },
-                    map: map,
-                    icon: image
-                });
-            }
-        </script>
-        <!-- google map js -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
-        <!-- end google map js -->
-    </body>
-
-</html>
+                                    </html>
