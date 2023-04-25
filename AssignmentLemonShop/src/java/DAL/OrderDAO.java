@@ -14,13 +14,48 @@ import java.sql.ResultSet;
 public class OrderDAO extends DBContext{
     PreparedStatement ps = null;
     ResultSet rs = null;
-    public  void insert(String aid,String date){
-        String sql ="INSERT INTO [dbo].[order]([account_id],[order_date],[total_price],[status_id])VALUES(?,?,?,?)";
+    public  void insert(int aid){
+        String sql ="exec insert_into_order @aid=?";
         try {
             ps = connection.prepareStatement(sql);
-            ps.setString(1, aid);
-            ps.setSt
+            ps.setInt(1, aid);
+           ps.executeUpdate();
+            
         } catch (Exception e) {
         }
+    }
+     public  void updatePrice(int oid,float price){
+        String sql ="exec update_price_order @oid=?, @price=?";
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setInt(1, oid);
+            ps.setFloat(2, price);
+           ps.executeUpdate();
+            
+        } catch (Exception e) {
+        }
+    }
+    public  int getMaxId(){
+        String sql ="SELECT top (1) * FROM [order] order by order_id desc";
+        try {
+            ps = connection.prepareStatement(sql);
+            
+            rs=ps.executeQuery();
+            while(rs.next()){
+                return rs.getInt(1);
+            }
+            
+            
+            
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        return  -1;
+    }
+}
+class test{
+    public static void main(String[] args) {
+        OrderDAO orderDAO= new OrderDAO();
+        System.out.println(orderDAO.getMaxId());
     }
 }

@@ -54,6 +54,17 @@ public class CartItemDAO extends DBContext {
             
         }
     }
+    public void deleteCartItemByCartId(int cartItemId)  {
+        String query = "DELETE FROM cart_item WHERE cart_id=? ";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, cartItemId);
+             statement.executeUpdate();
+            
+        }catch(Exception ex){
+            
+        }
+    }
+    
 
     public CartItem getCartItemById(int cartItemId)  {
         String query = "SELECT * FROM cart_item WHERE cart_item_id = ?";

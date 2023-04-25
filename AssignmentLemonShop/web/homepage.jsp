@@ -384,7 +384,7 @@
                                                                     <div class="col-lg-3 col-md-6 col-sm-6 ">
                                                                         <div class="address">
                                                                             <h3>why choose us</h3>
-                                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna </p>
+                                                                            <p>Always connect street culture in general as well as Skateboarding in particular, find and develop promising individuals in the community </p>
                                                                             <form class="newtetter">
                                                                                 <input class="tetter" placeholder="Your email" type="text" name="Your email">
                                                                                 <button class="submit">Subscribe</button>
@@ -398,7 +398,7 @@
 
                                                     <div class="copyright"> 
                                                         <div class="container">
-                                                            <a class="text-center">Copyright by Lemon</a>
+                                                            <p>© 2021 Lemon. Đã đăng ký Bản quyền</p>
                                                         </div>
                                                     </div>
                                                 </div>

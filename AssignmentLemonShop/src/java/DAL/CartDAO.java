@@ -64,9 +64,9 @@ public class CartDAO extends  DBContext{
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     Cart cart = new Cart();
-                    cart.setCartId(resultSet.getInt("cart_id"));
-                    cart.setAccountId(resultSet.getInt("account_id"));
-                    cart.setTotalPrice(resultSet.getFloat("total_price"));
+                    cart.setCartId(resultSet.getInt(1));
+                    cart.setAccountId(resultSet.getInt(2));
+                   // cart.setTotalPrice(resultSet.getFloat(3));
                     return cart;
                 } 
             }
@@ -102,4 +102,11 @@ public class CartDAO extends  DBContext{
         }
     }
 }
+class Test{
+    public static void main(String[] args) {
+        CartDAO cartDAO= new CartDAO();
+        System.out.println(cartDAO.getCartById(1));
+    }
+}
+       
 

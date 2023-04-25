@@ -5,12 +5,20 @@
 
 package controller;
 
+import DAL.CartDAO;
+import DAL.CartItemDAO;
+import DAL.OrderDAO;
+import DAL.OrderDetailDAO;
+import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Cart;
+import model.Product;
 
 /**
  *
@@ -66,7 +74,29 @@ public class Order extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String aid= request.getParameter("accountid")
+        float price=0;
+        String aid= request.getParameter("accountid");
+        PrintWriter out = response.getWriter();
+        OrderDAO odao= new OrderDAO();
+        odao.insert(Integer.parseInt(aid));
+        ProductDAO pdao = new ProductDAO();
+        
+        OrderDetailDAO detailDAO = new OrderDetailDAO();
+        int oid= odao.getMaxId();
+        List<Product> listP= pdao.getProductByAId(Integer.parseInt(aid));
+        for (Product product : listP) {
+            
+            String quantity= request.getParameter("quantity"+product.getProductId());
+  
+            detailDAO.add(oid, product.getCategoryId(), Integer.parseInt(quantity));
+            price+=(Integer.parseInt(quantity)*product.getPrice());
+        }
+        CartDAO cartDAO= new CartDAO();
+        Cart cart=cartDAO.getCartById(Integer.parseInt(aid));
+        CartItemDAO cartItemDAO= new CartItemDAO();
+        cartItemDAO.deleteCartItemByCartId(cart.getCartId());
+       odao.updatePrice(oid, price);
+        
     }
 
     /** 

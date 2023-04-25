@@ -59,8 +59,8 @@ public class BuyController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String id= request.getParameter("id");
-        String aid= request.getParameter("aid");
+        String id= request.getParameter("id");//id=22
+        String aid= request.getParameter("aid");//aid=1
         CartDAO cartDAO= new CartDAO();
         ProductDAO pdao= new ProductDAO();
         Cart cart= cartDAO.getCartById(Integer.parseInt(aid));
