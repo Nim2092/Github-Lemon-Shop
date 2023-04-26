@@ -18,7 +18,7 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
         <!-- site metas -->
         <title>Lemon Shop</title>
-        <link rel="icon" href="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-cartoon-lemon-png-download-image_1191053.jpg">
+        <link rel="icon" href="https://img.freepik.com/premium-vector/lemon-logo-symbol-idea-graphic-design_193512-161.jpg">
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -100,7 +100,7 @@
                                         <div class="full">
                                             <div class="center-desk">
                                                 <div class="logo">
-                                                    <a href="homepage.jsp"><img src="images/logolemon.png" alt="#"></a>
+                                                    <a href="home"><img src="images/logolemon.png" alt="#"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -109,7 +109,7 @@
                                         <div class="right_header_info">
                                             <ul>
                                                 <li class="menu_iconb">
-                                                    <a href="#"><img style="margin-right: 15px;" src="icon/1.png" alt="#" />0000000000</a>
+                                                    <a href="#"><img style="margin-right: 15px;" src="icon/1.png" alt="#" />+84919982032</a>
                                                 </li>
                                                 <c:if test="${sessionScope.acc==null}">
                                                     <li class="menu_iconb">
@@ -252,7 +252,7 @@
                             <div class="row">
 
                                 <c:forEach var="p" items="${listP}">
-                                    <a href="product?id=${p.getProductId()}" ><div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                    <a href="product?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}" ><div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
                                             <div class="brand-box">
 
                                                 <i><img src="${p.getImageUrl()}"/>
@@ -305,11 +305,12 @@
                                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                                         <div class="save_box">
                                                                             <h3>About Me</h3>
-                                                                            <p>VỀ CHÚNG TÔI
-Được thành lập từ 2016 với tư cách là một cửa hàng cung cấp quần áo tại Vĩnh Phúc. “Lemon” là tên của founder, lấy nguồn cảm hứng từ văn hóa của đường phố từ những năm cuối thập niên 90 cho tới tận bây giờ. “lemon” Chính là số đông, là cộng đồng, chính vì thế cái tên “Lemon” ra đời, chúng tôi không phải cá nhân, chúng tôi được sáng lập bởi cộng đồng!
-Cảm thấy quá tẻ nhạt sau 9 năm nếu mãi chỉ là một đại lý phân phối nên chúng tôi quyết định phải trở thành một nhà sản xuất độc lập. Luôn kết nối văn hóa đường phố nói chung cũng như  nói riêng, tìm kiếm, phát triển những cá nhân có triển vọng trong cộng đồng
+                                                                            <p style="color:black">Được thành lập từ 2016 với tư cách là một cửa hàng cung cấp quần áo tại Vĩnh Phúc. “Lemon” là tên của founder, lấy nguồn cảm hứng từ văn hóa của đường phố từ những năm cuối thập niên 90 cho tới tận bây giờ.
+“lemon” Chính là số đông, là cộng đồng, chính vì thế cái tên “Lemon” ra đời, chúng tôi không phải cá nhân, chúng tôi được sáng lập bởi cộng đồng!
+Cảm thấy quá tẻ nhạt sau 9 năm nếu mãi chỉ là một đại lý phân phối nên chúng tôi quyết định phải trở thành một nhà sản xuất độc lập. 
+Luôn kết nối văn hóa đường phố nói chung cũng như  nói riêng, tìm kiếm, phát triển những cá nhân có triển vọng trong cộng đồng
 #LEMONSHOP</p>
-                                                                            <a href="home">Buy now</a>
+                                                                            <a href="home">Shopping now</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>

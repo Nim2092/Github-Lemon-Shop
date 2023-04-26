@@ -76,16 +76,35 @@ public class AccountDAO extends DBContext{
         }
     }
 
-    public Account getAccountByUsername(String username)  {
+    public Account getAccountByUsername(String username) {
         String query = "SELECT * FROM account WHERE username = ?";
-//        try {
-//            Statement stmt = connection.createStatement();
-//            // get data from table 'student'
-//            ResultSet rs = stmt.executeQuery("select * from account");
-//        } catch (Exception e) {
-//        }
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, username);
+            try ( ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Account account = new Account();
+                    account.setAccountId(resultSet.getInt(1));
+                    account.setUsername(resultSet.getString(2));
+                    account.setPassword(resultSet.getString(3));
+                    account.setEmail(resultSet.getString(4));
+                    account.setFullName(resultSet.getString(5));
+                    account.setPhoneNumber(resultSet.getString(6));
+                    account.setAddress(resultSet.getString(7));
+                    account.setDateOfBirth(resultSet.getDate(8));
+                    account.setRole(resultSet.getInt(9));
+                    return account;
+                }
+            } catch (Exception e) {
+            }
+        } catch (Exception e) {
+
+        }
+        return null;
+    }
+    public Account getAccountByAid(int aid)  {
+        String query = "SELECT * FROM account WHERE account_id = ?";
+        try ( PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, aid);
             try ( ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Account account = new Account();
@@ -143,6 +162,6 @@ public class AccountDAO extends DBContext{
 class  test{
     public static void main(String[] args) {
         AccountDAO accountDAO= new AccountDAO();
-        accountDAO.addAccount("hminh", "1312", "asdasd@gmail.com", "Hoaang Minh", null, null, "1985-07-22");
+        System.out.println(accountDAO.getAccountByAid(1));
     }
 }

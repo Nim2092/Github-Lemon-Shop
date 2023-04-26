@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
+  <link rel="icon" href="https://img.freepik.com/premium-vector/lemon-logo-symbol-idea-graphic-design_193512-161.jpg">
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -83,6 +84,7 @@
   cursor: pointer;
 }
   </style>
+  <link rel="icon" href="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-cartoon-lemon-png-download-image_1191053.jpg">
 </head>
 <body>
   <form action="login" method="post" class="login-form">

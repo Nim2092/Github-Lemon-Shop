@@ -58,9 +58,11 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         String id=request.getParameter("id");
+        String aid=request.getParameter("aid");
         ProductDAO pdao = new ProductDAO();
         Product product=pdao.getProductById(Integer.parseInt(id));
         request.setAttribute("product", product);
+        request.setAttribute("aid", aid);
          CategoryDAO cdao= new CategoryDAO();
          Category category=cdao.getCategoryById(product.getCategoryId());
          request.setAttribute("category", category);

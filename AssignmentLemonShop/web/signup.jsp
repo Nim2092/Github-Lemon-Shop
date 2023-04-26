@@ -11,6 +11,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up</title>
+  <link rel="icon" href="https://img.freepik.com/premium-vector/lemon-logo-symbol-idea-graphic-design_193512-161.jpg">
   <style>
 * {
   box-sizing: border-box;
@@ -72,6 +73,7 @@ button[type="submit"]:hover {
 }
 
   </style>
+  <link rel="icon" href="https://png.pngtree.com/element_our/20190529/ourlarge/pngtree-cartoon-lemon-png-download-image_1191053.jpg">
 </head>
 <body>
   <div class="container">

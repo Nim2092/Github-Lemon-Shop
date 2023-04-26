@@ -5,6 +5,7 @@
 
 package controller;
 
+import DAL.AccountDAO;
 import DAL.CartDAO;
 import DAL.CartItemDAO;
 import DAL.OrderDAO;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.Account;
 import model.Cart;
 import model.Product;
 
@@ -95,7 +97,13 @@ public class Order extends HttpServlet {
         Cart cart=cartDAO.getCartById(Integer.parseInt(aid));
         CartItemDAO cartItemDAO= new CartItemDAO();
         cartItemDAO.deleteCartItemByCartId(cart.getCartId());
-       odao.updatePrice(oid, price);
+        odao.updatePrice(oid, price);
+        request.setAttribute("price", price);
+        AccountDAO adao=new AccountDAO();
+        Account account= adao.getAccountByAid(Integer.parseInt(aid));
+         request.setAttribute("name", account.getFullName());
+         request.setAttribute("accountNumber", account.getUsername());
+        request.getRequestDispatcher("paymentsuccessful.jsp").forward(request, response);
         
     }
 

@@ -8,7 +8,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap 5 Example</title>
+  <title>Product</title>
+  <link rel="icon" href="https://img.freepik.com/premium-vector/lemon-logo-symbol-idea-graphic-design_193512-161.jpg">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -59,7 +60,7 @@
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
               <a href="home" class="text-dark fw-bold">Cancel</a>
-              <button type="button" class="btn btn-primary">Buy now</button>
+              <a href="buy?id=${product.getProductId()}&aid=${aid}"><button type="button" class="btn btn-primary">Buy now</button></a>
             </div>
           </div>
         </div>
