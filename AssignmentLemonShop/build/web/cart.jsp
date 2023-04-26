@@ -112,6 +112,9 @@
                                         <div class="col-lg-4 bg-grey">
                                             <div class="p-5">
                                                 <h3 class="fw-bold mb-5 mt-2 pt-1">Submit Order</h3>
+                                                <input type="submit" value="Apply" /><input type="text" name="code" value="" 
+                                                                                      placeholder= "Your gift code" value="" require/>
+                                                
                                                 <hr class="my-4">
 
                                                 <div class="d-flex justify-content-between mb-4">

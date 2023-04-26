@@ -304,7 +304,11 @@
                                                                 <div class="row">
                                                                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                                                         <div class="save_box">
-                                                                            <h3>sale up to 50%</h3>
+                                                                            <h3>About Me</h3>
+                                                                            <p>VỀ CHÚNG TÔI
+Được thành lập từ 2016 với tư cách là một cửa hàng cung cấp quần áo tại Vĩnh Phúc. “Lemon” là tên của founder, lấy nguồn cảm hứng từ văn hóa của đường phố từ những năm cuối thập niên 90 cho tới tận bây giờ. “lemon” Chính là số đông, là cộng đồng, chính vì thế cái tên “Lemon” ra đời, chúng tôi không phải cá nhân, chúng tôi được sáng lập bởi cộng đồng!
+Cảm thấy quá tẻ nhạt sau 9 năm nếu mãi chỉ là một đại lý phân phối nên chúng tôi quyết định phải trở thành một nhà sản xuất độc lập. Luôn kết nối văn hóa đường phố nói chung cũng như  nói riêng, tìm kiếm, phát triển những cá nhân có triển vọng trong cộng đồng
+#LEMONSHOP</p>
                                                                             <a href="home">Buy now</a>
                                                                         </div>
                                                                     </div>
