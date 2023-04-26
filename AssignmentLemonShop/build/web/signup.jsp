@@ -93,7 +93,7 @@ button[type="submit"]:hover {
       <input type="email" id="email" name="email" required>
       
       <button onclick ="checkPass()" type="submit">Sign Up</button><span>${message}</span>
-      <p class="signup-link">Have an account? <a href="signup.html">Login here</a></p>
+      <p class="signup-link">Have an account? <a href="login.jsp">Login here</a></p>
       <p id ="message"class="message"></p>
     </form>
   </div>

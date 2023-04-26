@@ -137,15 +137,16 @@ public class AccountDAO extends DBContext{
                 List<Account> accounts = new ArrayList<>();
                 while (resultSet.next()) {
                     Account account = new Account();
-                    account.setAccountId(resultSet.getInt("account_id"));
-                    account.setUsername(resultSet.getString("username"));
-                    account.setPassword(resultSet.getString("password"));
-                    account.setEmail(resultSet.getString("email"));
-                    account.setFullName(resultSet.getString("full_name"));
-                    account.setPhoneNumber(resultSet.getString("phone_number"));
-                    account.setAddress(resultSet.getString("address"));
-                    account.setDateOfBirth(resultSet.getDate("date_of_birth"));
-                    account.setRole(resultSet.getInt("role"));
+                    account.setAccountId(resultSet.getInt(1));
+                    account.setUsername(resultSet.getString(2));
+                    account.setPassword(resultSet.getString(3));
+                    account.setEmail(resultSet.getString(4));
+                    account.setFullName(resultSet.getString(5));
+                    account.setPhoneNumber(resultSet.getString(6));
+                    account.setAddress(resultSet.getString(7));
+                    account.setDateOfBirth(resultSet.getDate(8));
+                    account.setRole(resultSet.getInt(9));
+                    
                     accounts.add(account);
                 }
                 

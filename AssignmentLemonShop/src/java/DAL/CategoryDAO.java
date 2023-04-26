@@ -5,6 +5,7 @@
 package DAL;
 
 
+import java.security.cert.CRLReason;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,11 +75,11 @@ public class CategoryDAO extends  DBContext{
         return null;
     }
 
-    public void addCategory(Category category)  {
-        String query = "INSERT INTO category(category_name, parent_category_id) VALUES (?, ?)";
+    public void addCategory(String category)  {
+        String query = "INSERT INTO category (category_name,[parent_category_id]) VALUES (?,null)";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, category.getCategoryName());
-            statement.setInt(2, category.getParentCategoryId());
+            statement.setString(1, category);
+            
             statement.executeUpdate();
         }
         catch(Exception e){
@@ -110,5 +111,12 @@ public class CategoryDAO extends  DBContext{
         catch(Exception e){
                 
             }
+    }
+}
+class test{
+    public static void main(String[] args) {
+        CategoryDAO cdao= new CategoryDAO();
+        cdao.addCategory("hat");
+        System.out.println(cdao.getAllCategories());
     }
 }
