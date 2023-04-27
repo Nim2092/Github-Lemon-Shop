@@ -5,6 +5,7 @@
 
 package controller;
 
+import DAL.CategoryDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -53,7 +54,10 @@ public class DeleteCategory extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String cid= request.getParameter("cid");
+        CategoryDAO cdao= new CategoryDAO();
+        cdao.deleteCategory(Integer.parseInt(cid));
+        response.sendRedirect("admin");
     } 
 
     /** 

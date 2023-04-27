@@ -1,4 +1,4 @@
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : homepage
     Created on : Apr 23, 2023, 3:00:11 PM
@@ -80,6 +80,11 @@
                                 <a href="category?id=${c.getCategoryId()}">${c.getCategoryName()}</a>
                             </li>
                         </c:forEach>
+                        <c:if test="${sessionScope.acc.getRole()==1}">
+                            <li >
+                                <a href="admin">Admin</a>
+                            </li>
+                        </c:if>
 
                     </ul>
 
@@ -121,8 +126,8 @@
                                                         <a href="signup.jsp">Signup<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
                                                     </li>
                                                     <li class="tytyu">
-                                                    <a onclick="mustlogin()" href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
-                                                </li>
+                                                        <a onclick="mustlogin()" href="#"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
+                                                    </li>
                                                 </c:if>
                                                 <c:if test="${sessionScope.acc!=null}">
                                                     <li class="menu_iconb">
@@ -134,11 +139,11 @@
                                                         <a href="#">${sessionScope.acc.getFullName()}<img style="margin-left: 15px;" src="icon/6.png" alt="#" /></a>
                                                     </li>
                                                     <li class="tytyu">
-                                                    <a href="cart.jsp"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
-                                                </li>
+                                                        <a href="cart.jsp"> <img style="margin-right: 15px;" src="icon/2.png" alt="#" /></a>
+                                                    </li>
                                                 </c:if>
 
-                                                
+
                                                 <li class="menu_iconb">
                                                     <a href="#"><img style="margin-right: 15px;" src="icon/3.png" alt="#" /></a>
                                                 </li>
@@ -267,227 +272,227 @@
                                                 <a class="buynow"  href="buy?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}">Buy now</a>
                                             </c:if>
 
-                                                </div> </a>
-                                </c:forEach>
-                                <c:forEach var="p" items="${listPid}">
-                                                <a href="product?id=${p.getProductId()}"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                                                <div class="brand-box">
+                                        </div> </a>
+                                    </c:forEach>
+                                    <c:forEach var="p" items="${listPid}">
+                                    <a href="product?id=${p.getProductId()}"> <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
+                                            <div class="brand-box">
 
-                                                    <i><img src="${p.getImageUrl()}"/>
-                                                    </i>
-                                                    <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
+                                                <i><img src="${p.getImageUrl()}"/>
+                                                </i>
+                                                <h4>$<span class="nolmal">${p.getPrice1()}</span></h4>
 
+                                            </div>
+                                            <c:if test="${sessionScope.acc==null}">
+                                                <a class="buynow" onclick="mustlogin()" href="#">Buy now</a>
+                                            </c:if>
+                                            <c:if test="${sessionScope.acc!=null}">
+                                                <a class="buynow"  href="buy?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}">Buy now</a>
+                                            </c:if>
+                                        </div> </a>
+                                    </c:forEach>
+                            </div>        
+                            <a class="seemore" href="#">See more</a>
+                            <!-- end news brand -->
+
+
+
+                            <!-- end Categories -->
+
+                            <section>
+                                <!--  save -->
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="save">
+                                                <div class="row">
+                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="save_box">
+                                                            <h3>About Me</h3>
+                                                            <p style="color:black">Được thành lập từ 2016 với tư cách là một cửa hàng cung cấp quần áo tại Vĩnh Phúc. “Lemon” là tên của founder, lấy nguồn cảm hứng từ văn hóa của đường phố từ những năm cuối thập niên 90 cho tới tận bây giờ.
+                                                                “lemon” Chính là số đông, là cộng đồng, chính vì thế cái tên “Lemon” ra đời, chúng tôi không phải cá nhân, chúng tôi được sáng lập bởi cộng đồng!
+                                                                Cảm thấy quá tẻ nhạt sau 9 năm nếu mãi chỉ là một đại lý phân phối nên chúng tôi quyết định phải trở thành một nhà sản xuất độc lập. 
+                                                                Luôn kết nối văn hóa đường phố nói chung cũng như  nói riêng, tìm kiếm, phát triển những cá nhân có triển vọng trong cộng đồng
+                                                                #LEMONSHOP</p>
+                                                            <a href="home">Shopping now</a>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <c:if test="${sessionScope.acc==null}">
-                                                    <a class="buynow" onclick="mustlogin()" href="#">Buy now</a>
-                                                </c:if>
-                                                <c:if test="${sessionScope.acc!=null}">
-                                                    <a class="buynow"  href="buy?id=${p.getProductId()}&aid=${sessionScope.acc.getAccountId()}">Buy now</a>
-                                                    </c:if>
-                                                    </div> </a>
-                                </c:forEach>
-                                                </div>        
-                                                <a class="seemore" href="#">See more</a>
-                                            <!-- end news brand -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end save -->
+                            </section>
 
 
 
-                                            <!-- end Categories -->
 
-                                            <section>
-                                                <!--  save -->
-
-                                                <div class="container">
+                            <!--  footer -->
+                            <footer>
+                                <div class="footer">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="footer_top">
                                                     <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="save">
-                                                                <div class="row">
-                                                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                                        <div class="save_box">
-                                                                            <h3>About Me</h3>
-                                                                            <p style="color:black">Được thành lập từ 2016 với tư cách là một cửa hàng cung cấp quần áo tại Vĩnh Phúc. “Lemon” là tên của founder, lấy nguồn cảm hứng từ văn hóa của đường phố từ những năm cuối thập niên 90 cho tới tận bây giờ.
-“lemon” Chính là số đông, là cộng đồng, chính vì thế cái tên “Lemon” ra đời, chúng tôi không phải cá nhân, chúng tôi được sáng lập bởi cộng đồng!
-Cảm thấy quá tẻ nhạt sau 9 năm nếu mãi chỉ là một đại lý phân phối nên chúng tôi quyết định phải trở thành một nhà sản xuất độc lập. 
-Luôn kết nối văn hóa đường phố nói chung cũng như  nói riêng, tìm kiếm, phát triển những cá nhân có triển vọng trong cộng đồng
-#LEMONSHOP</p>
-                                                                            <a href="home">Shopping now</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                            <a href="index.html"> <img class="logo1" src="images/logo1.png" /></a>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                                            <ul class="sociel">
+                                                                <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                                <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
+                                                                <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- end save -->
-                                            </section>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
+                                                <div class="row">
+                                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 ">
+                                                        <div class="address">
+                                                            <h3>Contact us </h3>
+                                                            <ul class="loca">
+                                                                <li>
+                                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>70 Nguyen Hoang
+                                                                    <br>Ha Noi </li>
+                                                                <li>
+                                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+84919982032 </li>
+                                                                <li>
+                                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>lemonshop@gmail.com </li>
 
+                                                            </ul>
 
-
-
-                                            <!--  footer -->
-                                            <footer>
-                                                <div class="footer">
-                                                    <div class="container">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="footer_top">
-                                                                    <div class="row">
-                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                                            <a href="index.html"> <img class="logo1" src="images/logo1.png" /></a>
-                                                                        </div>
-                                                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                                                            <ul class="sociel">
-                                                                                <li> <a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                                                                <li> <a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                                                <li> <a href="#"><i class="fa fa-instagram"></i></a></li>
-                                                                                <li> <a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 ">
-                                                                <div class="row">
-                                                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 ">
-                                                                        <div class="address">
-                                                                            <h3>Contact us </h3>
-                                                                            <ul class="loca">
-                                                                                <li>
-                                                                                    <a href="#"><img src="icon/loc.png" alt="#" /></a>70 Nguyen Hoang
-                                                                                    <br>Ha Noi </li>
-                                                                                <li>
-                                                                                    <a href="#"><img src="icon/call.png" alt="#" /></a>+84919982032 </li>
-                                                                                <li>
-                                                                                    <a href="#"><img src="icon/email.png" alt="#" /></a>lemonshop@gmail.com </li>
-
-                                                                            </ul>
-
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-3 col-md-6 col-sm-6">
-                                                                        <div class="address">
-                                                                            <h3>Service</h3>
-                                                                            <ul class="Links_footer">
-                                                                                <li class="active"><a href="#">My account</a> </li>                                                
-                                                                                <li><a href="#">My Cart</a> </li>
-                                                                                <li><a href="#"> Checkout</a> </li>
-                                                                                    <c:if test="${sessionScope.acc==null}">
-                                                                                    <li><a href="login.jsp">Login</a> </li>
-                                                                                    </c:if>
-                                                                                    <c:if test="${sessionScope.acc!=null}">
-                                                                                    <li><a href="logout">Logout</a> </li>
-                                                                                    </c:if>
-
-
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-lg-3 col-md-6 col-sm-6 ">
-                                                                        <div class="address">
-                                                                            <h3>why choose us</h3>
-                                                                            <p>Always connect street culture in general as well as Skateboarding in particular, find and develop promising individuals in the community </p>
-                                                                            <form class="newtetter">
-                                                                                <input class="tetter" placeholder="Your email" type="text" name="Your email">
-                                                                                <button class="submit">Subscribe</button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="copyright"> 
-                                                        <div class="container">
-                                                            <p>© 2021 Lemon. Đã đăng ký Bản quyền</p>
+                                                    <div class="col-lg-3 col-md-6 col-sm-6">
+                                                        <div class="address">
+                                                            <h3>Service</h3>
+                                                            <ul class="Links_footer">
+                                                                <li class="active"><a href="#">My account</a> </li>                                                
+                                                                <li><a href="#">My Cart</a> </li>
+                                                                <li><a href="#"> Checkout</a> </li>
+                                                                    <c:if test="${sessionScope.acc==null}">
+                                                                    <li><a href="login.jsp">Login</a> </li>
+                                                                    </c:if>
+                                                                    <c:if test="${sessionScope.acc!=null}">
+                                                                    <li><a href="logout">Logout</a> </li>
+                                                                    </c:if>
+
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-6 col-sm-6 ">
+                                                        <div class="address">
+                                                            <h3>why choose us</h3>
+                                                            <p>Always connect street culture in general as well as Skateboarding in particular, find and develop promising individuals in the community </p>
+                                                            <form class="newtetter">
+                                                                <input class="tetter" placeholder="Your email" type="text" name="Your email">
+                                                                <button class="submit">Subscribe</button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </footer>
-                                            <!-- end footer -->
-
-
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="overlay"></div>
+                                    <div class="copyright"> 
+                                        <div class="container">
+                                            <p>© 2021 Lemon. Đã đăng ký Bản quyền</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                    <!-- Javascript files-->
-                                    <script src="js/jquery.min.js"></script>
-                                    <script src="js/popper.min.js"></script>
-                                    <script src="js/bootstrap.bundle.min.js"></script>
-                                    <script src="js/jquery-3.0.0.min.js"></script>
+                            </footer>
+                            <!-- end footer -->
 
-                                    <!-- sidebar -->
-                                    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-                                    <script src="js/custom.js"></script>
-                                    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-                                    <script type="text/javascript">
-                                                        $(document).ready(function () {
-                                                            $("#sidebar").mCustomScrollbar({
-                                                                theme: "minimal"
-                                                            });
 
-                                                            $('#dismiss, .overlay').on('click', function () {
-                                                                $('#sidebar').removeClass('active');
-                                                                $('.overlay').removeClass('active');
-                                                            });
+                        </div>
 
-                                                            $('#sidebarCollapse').on('click', function () {
-                                                                $('#sidebar').addClass('active');
-                                                                $('.overlay').addClass('active');
-                                                                $('.collapse.in').toggleClass('in');
-                                                                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                                                            });
-                                                        });
-                                    </script>
+                        <div class="overlay"></div>
 
-                                    <script>
-                                        $(document).ready(function () {
-                                            $(".fancybox").fancybox({
-                                                openEffect: "none",
-                                                closeEffect: "none"
+                        <!-- Javascript files-->
+                        <script src="js/jquery.min.js"></script>
+                        <script src="js/popper.min.js"></script>
+                        <script src="js/bootstrap.bundle.min.js"></script>
+                        <script src="js/jquery-3.0.0.min.js"></script>
+
+                        <!-- sidebar -->
+                        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+                        <script src="js/custom.js"></script>
+                        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+                        <script type="text/javascript">
+                                            $(document).ready(function () {
+                                                $("#sidebar").mCustomScrollbar({
+                                                    theme: "minimal"
+                                                });
+
+                                                $('#dismiss, .overlay').on('click', function () {
+                                                    $('#sidebar').removeClass('active');
+                                                    $('.overlay').removeClass('active');
+                                                });
+
+                                                $('#sidebarCollapse').on('click', function () {
+                                                    $('#sidebar').addClass('active');
+                                                    $('.overlay').addClass('active');
+                                                    $('.collapse.in').toggleClass('in');
+                                                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                                                });
                                             });
+                        </script>
 
-                                            $(".zoom").hover(function () {
+                        <script>
+                            $(document).ready(function () {
+                                $(".fancybox").fancybox({
+                                    openEffect: "none",
+                                    closeEffect: "none"
+                                });
 
-                                                $(this).addClass('transition');
-                                            }, function () {
+                                $(".zoom").hover(function () {
 
-                                                $(this).removeClass('transition');
-                                            });
-                                        });
-                                    </script>
-                                    <script>
-                                        // This example adds a marker to indicate the position of Bondi Beach in Sydney,
-                                        // Australia.
-                                        function initMap() {
-                                            var map = new google.maps.Map(document.getElementById('map'), {
-                                                zoom: 11,
-                                                center: {
-                                                    lat: 40.645037,
-                                                    lng: -73.880224
-                                                },
-                                            });
+                                    $(this).addClass('transition');
+                                }, function () {
 
-                                            var image = 'images/maps-and-flags.png';
-                                            var beachMarker = new google.maps.Marker({
-                                                position: {
-                                                    lat: 40.645037,
-                                                    lng: -73.880224
-                                                },
-                                                map: map,
-                                                icon: image
-                                            });
-                                        }
-                                    </script>
-                                    <!-- google map js -->
-                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
-                                    <!-- end google map js -->
-                                    </body>
+                                    $(this).removeClass('transition');
+                                });
+                            });
+                        </script>
+                        <script>
+                            // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+                            // Australia.
+                            function initMap() {
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                    zoom: 11,
+                                    center: {
+                                        lat: 40.645037,
+                                        lng: -73.880224
+                                    },
+                                });
 
-                                    </html>
+                                var image = 'images/maps-and-flags.png';
+                                var beachMarker = new google.maps.Marker({
+                                    position: {
+                                        lat: 40.645037,
+                                        lng: -73.880224
+                                    },
+                                    map: map,
+                                    icon: image
+                                });
+                            }
+                        </script>
+                        <!-- google map js -->
+                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8eaHt9Dh5H57Zh0xVTqxVdBFCvFMqFjQ&callback=initMap"></script>
+                        <!-- end google map js -->
+                        </body>
+
+                        </html>

@@ -98,14 +98,14 @@ public class ProductDAO extends DBContext {
         return null;
     }
     
-    public void addProduct(Product product) {
+    public void addProduct(String name,float price,String des,int cid,String url) {
         String query = "INSERT INTO product (product_name, price, description, category_id, image_url) VALUES (?, ?, ?, ?, ?)";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, product.getProductName());
-            statement.setFloat(2, (float) product.getPrice());
-            statement.setString(3, product.getDescription());
-            statement.setInt(4, product.getCategoryId());
-            statement.setString(5, product.getImageUrl());
+            statement.setString(1, name);
+            statement.setFloat(2, price);
+            statement.setString(3, des);
+            statement.setInt(4,cid);
+            statement.setString(5, url);
             statement.executeUpdate();
         } catch (Exception e) {
             
@@ -170,10 +170,4 @@ public class ProductDAO extends DBContext {
 
 
 
-class test {
 
-    public static void main(String[] args) {
-        ProductDAO pdao = new ProductDAO();
-        System.out.println(pdao.getProductByAId(1));
-    }
-}

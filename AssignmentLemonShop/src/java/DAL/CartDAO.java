@@ -102,11 +102,6 @@ public class CartDAO extends  DBContext{
         }
     }
 }
-class Test{
-    public static void main(String[] args) {
-        CartDAO cartDAO= new CartDAO();
-        System.out.println(cartDAO.getCartById(1));
-    }
-}
+
        
 

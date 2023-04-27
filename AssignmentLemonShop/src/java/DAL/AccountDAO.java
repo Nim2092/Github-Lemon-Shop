@@ -160,9 +160,4 @@ public class AccountDAO extends DBContext{
         
     }
 }
-class  test{
-    public static void main(String[] args) {
-        AccountDAO accountDAO= new AccountDAO();
-        System.out.println(accountDAO.getAccountByAid(1));
-    }
-}
+

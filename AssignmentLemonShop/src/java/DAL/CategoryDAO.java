@@ -76,10 +76,10 @@ public class CategoryDAO extends  DBContext{
     }
 
     public void addCategory(String category)  {
-        String query = "INSERT INTO category (category_name,[parent_category_id]) VALUES (?,null)";
-        try ( PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, category);
-            
+        String query = "INSERT INTO [category] ([category_name]) VALUES (?)";
+        try  {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, category);            
             statement.executeUpdate();
         }
         catch(Exception e){
@@ -87,14 +87,14 @@ public class CategoryDAO extends  DBContext{
             }
     }
 
-    public void updateCategory(Category category) {
-        String query = "UPDATE category SET category_name = ?, parent_category_id = ? WHERE category_id = ?";
+    public void updateCategory(int cid,String cname) {
+        String query = "UPDATE category SET category_name = ? WHERE category_id = ?";
         try ( PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, category.getCategoryName());
+            statement.setString(1, cname);
 
-            statement.setInt(2, category.getParentCategoryId());
+            
 
-            statement.setInt(3, category.getCategoryId());
+            statement.setInt(2, cid);
             statement.executeUpdate();
         }
         catch(Exception e){
@@ -113,10 +113,4 @@ public class CategoryDAO extends  DBContext{
             }
     }
 }
-class test{
-    public static void main(String[] args) {
-        CategoryDAO cdao= new CategoryDAO();
-        cdao.addCategory("hat");
-        System.out.println(cdao.getAllCategories());
-    }
-}
+

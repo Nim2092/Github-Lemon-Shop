@@ -53,9 +53,4 @@ public class OrderDAO extends DBContext{
         return  -1;
     }
 }
-class test{
-    public static void main(String[] args) {
-        OrderDAO orderDAO= new OrderDAO();
-        System.out.println(orderDAO.getMaxId());
-    }
-}
+

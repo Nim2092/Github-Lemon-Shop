@@ -5,7 +5,7 @@
 
 package controller;
 
-import DAL.CategoryDAO;
+import DAL.ProductDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -15,9 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author asus
+ * @author Hanami
  */
-public class AddCategory extends HttpServlet {
+public class DeleteProduct extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,11 +29,9 @@ public class AddCategory extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name= request.getParameter("nameCate");
-        PrintWriter out= response.getWriter();
-        
-        CategoryDAO categoryDAO= new CategoryDAO();
-        categoryDAO.addCategory(name);
+        String pid=request.getParameter("pid");
+        ProductDAO pdao= new ProductDAO();
+        pdao.deleteProduct(Integer.parseInt(pid));
         response.sendRedirect("admin");
     } 
 

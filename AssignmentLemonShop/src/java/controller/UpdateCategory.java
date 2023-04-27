@@ -15,9 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author asus
+ * @author Hanami
  */
-public class AddCategory extends HttpServlet {
+public class UpdateCategory extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -29,11 +29,10 @@ public class AddCategory extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String name= request.getParameter("nameCate");
-        PrintWriter out= response.getWriter();
-        
-        CategoryDAO categoryDAO= new CategoryDAO();
-        categoryDAO.addCategory(name);
+        String idCate= request.getParameter("idCate");
+        String nameCate=request.getParameter("nameCate");
+        CategoryDAO cdao=new CategoryDAO();
+        cdao.updateCategory(Integer.parseInt(idCate),nameCate);
         response.sendRedirect("admin");
     } 
 

@@ -27,9 +27,3 @@ public class OrderDetailDAO extends DBContext {
         }
     }
 }
-class test{
-    public static void main(String[] args) {
-        OrderDetailDAO detailDAO = new OrderDetailDAO();
-        detailDAO.add(7, 1, 2);
-    }
-}

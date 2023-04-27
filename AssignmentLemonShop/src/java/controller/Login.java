@@ -84,13 +84,10 @@ public class Login extends HttpServlet {
                                 
             } else {
                 HttpSession session = request.getSession();
-                if (account.getRole() != 1){
+                
                     session.setAttribute("acc", account);
                     response.sendRedirect("home");
-                }else{
-                    session.setAttribute("acc", account);
-                    response.sendRedirect("admin");
-                }
+                
                 
             }
      
